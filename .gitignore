@@ -1,0 +1,42 @@
+# Gradle files
+.gradle/
+build/
+**/build/
+
+# Local configuration file
+local.properties
+
+# IDE specific files
+.idea/
+*.iml
+
+# Android Studio specific files
+.gradle/
+*.log
+*.orig
+*.swp
+.vscode/
+
+# Android specific files
+*.apk
+*.ap_
+*.aab
+*.aar
+
+# Keystore files
+*.jks
+*.keystore
+
+# Firebase Crashlytics
+/crashlytics-build/
+
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Android NDK
+local.properties
