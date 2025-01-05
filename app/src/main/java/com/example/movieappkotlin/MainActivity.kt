@@ -4,10 +4,12 @@ import android.graphics.Movie
 import android.graphics.Paint.Align
 import android.graphics.drawable.Icon
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -40,6 +42,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.movieappkotlin.navigation.MovieNavigation
 import com.example.movieappkotlin.ui.theme.MovieAppKotlinTheme
 
 class MainActivity : ComponentActivity() {
@@ -48,73 +51,42 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MovieAppKotlinTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    topBar = {
-                        TopAppBar(
-                            title = { Text("Custom App Bar") },
-                            colors = TopAppBarDefaults.topAppBarColors(
-                                containerColor = Color(0xFF6200EE), // Custom background color
-                                titleContentColor = Color.White // Custom text color
-                            )
-                        )
-                    }) { innerPadding ->
-                    MainContent(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+            MovieNavigation()
         }
     }
 }
 
 
-
 @Composable
-private fun MainContent(modifier: Modifier = Modifier,
-                        movieList: List<String> = listOf(
-                    "Avatar",
-                    "300",
-                    "X-Men",
-                    "Logan",
-                            "Taken",
-                            "Dil Dil"
-                )) {
-    Surface {
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .padding(12.dp)) {
-            LazyColumn {
-                items(items = movieList){
-                    MovieRow(movie = it)
-                }
-            }
-        }// Add padding to prevent text from being stuck to the edges
+fun MyApp(content: @Composable () -> Unit){
+    MovieAppKotlinTheme {
+        content()
     }
 }
 
 @Composable
-fun MovieRow(movie: String){
+fun MovieRow(movie: String, clickable: (String) -> Unit = {}){
     Card(modifier = Modifier
         .padding(4.dp)
         .fillMaxWidth()
-        .height(130.dp),
+        .height(130.dp)
+        .clickable {
+            clickable(movie)
+        },
         shape = RoundedCornerShape(CornerSize(size = 16.dp)),
-        elevation = CardDefaults.cardElevation(6.dp)) {
+        elevation = CardDefaults.cardElevation(6.dp),
+        colors = CardDefaults.cardColors(Color.White)) {
         Row (verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Start ){
             Surface(modifier = Modifier
                 .padding(12.dp)
                 .size(100.dp),
                 shape = RectangleShape,
-                shadowElevation = 4.dp) {
+                shadowElevation = 4.dp,) {
                 Icon(imageVector = Icons.Default.AccountBox, contentDescription = "Movie Image" )
             }
             Text(text = movie)
         }
-
     }
 }
 
@@ -122,6 +94,10 @@ fun MovieRow(movie: String){
 @Composable
 fun GreetingPreview() {
     MovieAppKotlinTheme {
-        MainContent()
+        MovieNavigation()
     }
 }
+
+
+
+
