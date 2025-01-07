@@ -17,8 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 //import com.example.movieappkotlin.MainContent
-import com.example.movieappkotlin.MovieRow
+import com.example.movieappkotlin.model.Movie
+import com.example.movieappkotlin.model.getMovies
 import com.example.movieappkotlin.navigation.MovieScreens
+import com.example.movieappkotlin.widgets.MovieRow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,16 +45,7 @@ fun HomeScreen(navController: NavController){
 @Composable
 private fun MainContent(navController: NavController,
                         modifier: Modifier = Modifier,
-                        movieList: List<String> = listOf(
-                            "Gladiator",
-                            "300",
-                            "X-Men",
-                            "Logan",
-                            "Life is Beautiful",
-                            "Taken",
-                            "Dil Dil",
-                            "300"
-                        )) {
+                        movieList: List<Movie> = getMovies() ){
     Column(
         modifier = modifier
             .fillMaxSize()

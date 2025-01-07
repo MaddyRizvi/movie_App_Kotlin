@@ -1,6 +1,5 @@
 package com.example.movieappkotlin.navigation
 
-import android.graphics.Movie
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -29,7 +28,7 @@ fun MovieNavigation(){
             arguments = listOf(navArgument(name = "movieData"){type= NavType.StringType})){
             backStackEntry ->
 
-            DetailsScreen(navController = navController, movieData = backStackEntry.arguments?.getString("movieData"))
+            DetailsScreen(navController = navController, movieId = backStackEntry.arguments?.getString("movieData"))
         }
     }
 }
