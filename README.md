@@ -45,8 +45,6 @@ The app uses a local database to store movie data and presents the information i
    ```bash
    git clone https://github.com/MaddyRizvi/movie_App_Kotlin
 
-# Movie App
-
 ## 2. Open the project in Android Studio:
 
 1. Open Android Studio and select **Open an existing project**.
