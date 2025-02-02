@@ -64,7 +64,7 @@
         }
 
         Card(modifier = Modifier
-            .padding(4.dp)
+            .padding(6.dp)
             .fillMaxWidth()
 //            .height(130.dp)
             .clickable {
