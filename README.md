@@ -27,7 +27,7 @@ The app uses a local database to store movie data and presents the information i
 
 ## Tech Stack
 
-- **Kotlin**: The primary language for development.
+- **Kotlin**: The primary language for development
 - **Room Database**: For storing movie data locally.
 - **Lazy Column**: For displaying the list of movies.
 - **ViewModel**: handle UI-related data lifecycle.
